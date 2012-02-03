@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://maven.apache.org/POM/4.0.0"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.dancres</groupId>
+    <artifactId>blitz-javaspaces</artifactId>
+    <version>2.1.5</version>
+    <packaging>jar</packaging>
+
+    <name>Blitz JavaSpaces</name>
+    <description>
+        A high-quality, persistent (if you want), open-source JavaSpaces implementation.
+        Pure Java - no native libraries required.
+        No External Database Requirement - just configure and go.
+        JINI 2.1 support - with backward compatibility to JINI 2.0.x.
+        JavaSpace05 support.
+    </description>
+
+    <developers>
+        <developer>
+            <name>Dan Creswell</name>
+            <email>dan.creswell@gmail.com</email>
+            <roles>
+                <role>Architect</role>
+                <role>Developer</role>
+            </roles>
+        </developer>
+        <developer>
+            <name>Dawid Loubser</name>
+            <email>dawid@travellinck.com</email>
+            <organization>Travellinck International</organization>
+            <roles>
+                <role>Packager</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <build>
+        <plugins>
+            <!-- Java Compilation -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                    <fork>true</fork>
+                    <maxmem>1024m</maxmem>
+                </configuration>
+            </plugin>
+            
+            <!-- Unit testing -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.9</version>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <!-- Jini Core -->
+        <dependency>
+            <groupId>net.jini</groupId>
+            <artifactId>jsk-lib</artifactId>
+            <version>2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>net.jini</groupId>
+            <artifactId>jsk-dl</artifactId>
+            <version>2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>net.jini</groupId>
+            <artifactId>jsk-platform</artifactId>
+            <version>2.1</version>
+        </dependency>
+
+        <!-- Sun Jini utilities -->
+        <dependency>
+            <groupId>com.sun.jini</groupId>
+            <artifactId>sun-util</artifactId>
+            <version>2.1</version>
+        </dependency>
+
+
+        <!-- Berkely DB Java Edition -->
+        <dependency>
+            <groupId>com.sleepycat</groupId>
+            <artifactId>je</artifactId>
+            <version>4.0.92</version>
+        </dependency>
+
+        <!-- Outrigger (JavaSpaces Reference Implementation) required for OutriggerViewer User Interface -->
+        <dependency>
+            <groupId>com.sun.jini</groupId>
+            <artifactId>outrigger</artifactId>
+            <version>2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.mina</groupId>
+            <artifactId>mina-core</artifactId>
+            <version>1.1.7</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.xsocket</groupId>
+            <artifactId>xSocket</artifactId>
+            <version>1.2.1</version>
+        </dependency>
+
+        <!-- TODO: Directly required?
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.6.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-jdk14</artifactId>
+            <version>1.6.4</version>
+        </dependency>
+        -->
+
+        <!-- Unit testing -->
+        <dependency>
+		    <groupId>junit</groupId>
+		    <artifactId>junit</artifactId>
+		    <version>4.8.1</version>
+		    <scope>test</scope>
+		</dependency>
+        
+    </dependencies>
+
+
+    <repositories>
+        <repository>
+            <id>travellinck-repo</id>
+            <url>http://repo.travellinck.com/nexus/content/repositories/releases</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>jboss-public-repository-group</id>
+            <name>JBoss Public Maven Repository Group</name>
+            <url>https://repository.jboss.org/nexus/content/groups/public-jboss/</url>
+        </repository>
+        <repository>
+            <id>rio</id>
+            <url>http://www.rio-project.org/maven2</url>
+        </repository>
+    </repositories>
+
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    
+</project>
