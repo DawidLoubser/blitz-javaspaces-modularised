@@ -39,3 +39,4 @@ Thumbs.db
 *.iml
 *.iws
 push.sh
+.idea
