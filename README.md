@@ -15,6 +15,6 @@ This project is a re-packaging of the Blitz project to build with Maven (suitabl
 Building
 --------
 
-* Required software: Apache Maven (3.0+ recommended), Java (JDK) 1.6+
+* Required software: Apache Maven (3.0+ recommended), Java (JDK) 1.6+, Rio 5.0+
 * To build artifacts and install in local maven repo, run `mvn install`
 * To run the integration tests (deploys to RIO, needs RIO_HOME set) run `mvn verify -Pintegration-test`
