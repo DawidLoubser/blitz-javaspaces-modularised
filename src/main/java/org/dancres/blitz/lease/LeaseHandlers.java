@@ -8,17 +8,13 @@ import java.util.logging.*;
 
 import net.jini.core.lease.UnknownLeaseException;
 import net.jini.core.lease.LeaseDeniedException;
-import net.jini.core.lease.Lease;
 
-import net.jini.config.ConfigurationException;
 import net.jini.config.ConfigurationFile;
 import net.jini.config.Configuration;
 
 import org.dancres.blitz.Logging;
 
 import org.dancres.blitz.config.ConfigurationFactory;
-
-import org.dancres.blitz.util.Time;
 
 /**
    The access point for managing leases associated with SpaceUIDs.  Lease

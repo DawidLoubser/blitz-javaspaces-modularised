@@ -10,7 +10,6 @@ import java.nio.channels.FileLock;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Properties;
 
 import java.util.logging.*;

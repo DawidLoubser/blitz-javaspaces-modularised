@@ -12,7 +12,7 @@ import org.rioproject.test.TestManager;
 
 import java.util.logging.Logger;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 /**
  * A simple test to check that we can deploy Blitz as a Rio-provisioned service.

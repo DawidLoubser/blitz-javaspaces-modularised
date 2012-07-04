@@ -19,6 +19,15 @@
         JavaSpace05 support.
     </description>
 
+    <!-- TODO: Move across serviceUI files etc, e.g (from original ant project):
+    <copy todir="${build}/org/dancres/blitz/serviceui"
+              file="${src}/org/dancres/blitz/serviceui/blitz.htm"/>
+    <copy todir="${build}/org/dancres/blitz/tools/dash/images">
+      <fileset dir="${src}/org/dancres/blitz/tools/dash/images">
+      </fileset>
+    </copy>
+    -->
+
     <developers>
         <developer>
             <name>Dan Creswell</name>
