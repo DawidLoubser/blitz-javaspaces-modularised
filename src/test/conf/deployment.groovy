@@ -54,8 +54,8 @@ deployment(name:'Basic Blitz Deployment')
             ignoreLogConfig = new Boolean(true);
             name = "Space";
             // TODO: Auto-set to somehwere in RIO install dir
-            persistDir = "/home/dawid/.blitz/data";
-            logDir = "/home/dawid/.blitz/log";
+            persistDir = "${RIO_HOME}/system/external/blitz/data";
+            logDir = "${RIO_HOME}/system/external/blitz/log";
             maxWriteThreads = 1;
             desiredPendingWrites = 256;
             dbCache = 27262976;
