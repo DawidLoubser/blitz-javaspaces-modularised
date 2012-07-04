@@ -8,9 +8,11 @@ The Rio Project (https://github.com/dreedyman/Rio) is an open source technology 
 About this project
 ------------------
 
-Blitz Javaspaces is historically built, provisioned, and configured using legacy technology: Built via apache ant, manually installed, configured via JINI configuration files. 
+Blitz Javaspaces is historically built, provisioned, and configured using legacy technology (built with apache ant + manual dependency management, manually installed, configured via JINI configuration files). 
+In other words, *difficult*.
 
-This project is a re-packaging of the Blitz project to build with Maven (suitable for deployment to the maven repo of your choice), and provides samples of how to dynamically provision Blitz instances as "first class" services in Rio.
+This project is a re-packaging of the Blitz project to build with Maven (suitable for deployment to the maven repo of your choice), and provides samples of how to dynamically provision Blitz instances as "first class" services in Rio. 
+It is now *easy* to provision a reliable, persistent JavaSpace with Rio.
 
 Building
 --------
