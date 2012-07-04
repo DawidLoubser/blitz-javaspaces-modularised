@@ -15,7 +15,7 @@ deployment(name:'Basic Blitz Deployment')
 
     logging
     {
-//      logger 'com.travellinck', Level.INFO
+      logger 'com.travellinck', Level.INFO
     }
 
 

@@ -38,6 +38,7 @@
         </developer>
     </developers>
 
+
     <build>
         <plugins>
             <!-- Java Compilation -->
@@ -59,6 +60,69 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.9</version>
             </plugin>
+
+            <!-- Create separate JARs for Blitz API, Implementation, Stats, etc -->
+            <plugin>
+                <artifactId>maven-rio-plugin</artifactId>
+                <version>5.0-SNAPSHOT</version>
+                <executions>
+                    <execution>
+                        <id>blitz-dl</id>
+                        <goals>
+                            <goal>classdepandjar</goal>
+                        </goals>
+                        <configuration>
+                            <createJar>
+                                <classifier>dl</classifier>
+                                <ins>
+                                    <in>com.go</in>
+                                    <in>org.dancres</in>
+                                    <in>net.jini</in>
+                                    <in>org.jini</in>
+                                    <in>com.sun.jini</in>
+                                </ins>
+                                <outs>
+                                    <out>net.jini.core</out>
+                                    <out>net.jini.activation</out>
+                                    <out>net.jini.config</out>
+                                    <out>net.jini.constraint</out>
+                                    <out>net.jini.export</out>
+                                    <out>net.jini.id</out>
+                                    <out>net.jini.iiop</out>
+                                    <out>net.jini.io</out>
+                                    <out>net.jini.jeri</out>
+                                    <out>net.jini.jrmp</out>
+                                    <out>net.jini.loader</out>
+                                    <out>net.jini.security</out>
+                                    <out>net.jini.url</out>
+                                    <out>com.sun.jini.discovery</out>
+                                </outs>
+                                <topclasses>
+                                    <topclass>org.dancres.blitz.remote.BlitzProxy</topclass>
+                                    <topclass>org.dancres.blitz.remote.BlitzServiceImpl_Stub</topclass>
+                                    <topclass>org.dancres.blitz.remote.LeaseImpl</topclass>
+                                    <topclass>org.dancres.blitz.notify.SpaceNotifyUID</topclass>
+                                    <topclass>org.dancres.blitz.remote.txn.SpaceTxnUID</topclass>
+                                    <topclass>org.dancres.blitz.remote.txn.TxnMgrProxy</topclass>
+                                    <topclass>org.dancres.blitz.notify.AvailabilityEventImpl</topclass>
+                                    <topclass>org.dancres.blitz.SpaceEntryUID</topclass>
+                                    <topclass>org.dancres.blitz.oid.UIDImpl</topclass>
+                                    <topclass>org.dancres.blitz.remote.AdminProxy</topclass>
+                                    <topclass>org.dancres.blitz.remote.TxnParticipantProxy</topclass>
+                                    <topclass>org.dancres.blitz.remote.ProxyVerifier</topclass>
+                                    <topclass>org.dancres.blitz.remote.ConstrainableTxnParticipantProxy</topclass>
+                                    <topclass>org.dancres.blitz.remote.ConstrainableBlitzProxy</topclass>
+                                    <topclass>org.dancres.blitz.remote.ConstrainableLeaseImpl</topclass>
+                                    <topclass>org.dancres.blitz.remote.ConstrainableAdminProxy</topclass>
+                                    <topclass>org.dancres.blitz.remote.debug.TimingInvocationHandler</topclass>
+                                    <topclass>org.dancres.blitz.remote.view.EntryViewUID</topclass>
+                                </topclasses>
+                            </createJar>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
 
@@ -134,6 +198,14 @@
 		    <version>4.8.1</version>
 		    <scope>test</scope>
 		</dependency>
+
+        <!-- Integration testing -->
+        <dependency>
+            <groupId>org.rioproject</groupId>
+            <artifactId>rio-test</artifactId>
+            <version>5.0-SNAPSHOT</version>
+            <scope>test</scope>
+        </dependency>
         
     </dependencies>
 
@@ -160,6 +232,38 @@
             <url>http://www.rio-project.org/maven2</url>
         </repository>
     </repositories>
+
+
+    <profiles>
+        <!-- Do integration testing on-demand only -->
+        <profile>
+            <id>integration-test</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <!-- Integration test(s) -->
+                    <plugin>
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                        <version>2.9</version>
+                        <configuration>
+                            <forkMode>once</forkMode>
+                            <argLine>-DRIO_TEST_ATTACH</argLine>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>integration-test</goal>
+                                    <goal>verify</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 
     <properties>
