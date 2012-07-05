@@ -6,13 +6,15 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.dancres</groupId>
-    <artifactId>blitz-javaspaces</artifactId>
+    <artifactId>blitz-javaspaces-mr</artifactId>
     <version>2.1.5</version>
     <packaging>jar</packaging>
 
     <name>Blitz JavaSpaces</name>
     <description>
-        A high-quality, persistent (if you want), open-source JavaSpaces implementation.
+        A high-quality, persistence-capable,
+        open-source JavaSpaces implementation.
+
         Pure Java - no native libraries required.
         No External Database Requirement - just configure and go.
         JINI 2.1 support - with backward compatibility to JINI 2.0.x.
@@ -74,6 +76,7 @@
             </plugin>
 
             <!-- Create separate JARs for Blitz API, Implementation, Stats, etc -->
+            <!-- TODO: Properly separate into different modules (classdepandjar approach is deprecated) -->
             <plugin>
                 <artifactId>maven-rio-plugin</artifactId>
                 <version>5.0-SNAPSHOT</version>
