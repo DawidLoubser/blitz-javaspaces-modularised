@@ -32,7 +32,7 @@ deployment(name:'Basic Blitz Deployment') {
         // Sample configuration for a basic, untuned, default instance. See Blitz
         // sample configs for details
         //configuration "file:src/test/conf/blitz.config"
-        configuration "file:/Users/dreedy/dev/src/projects/blitz/blitz-javaspaces-modularised/blitz-service/src/test/conf/BlitzConfig.groovy"
+        configuration "file:src/test/conf/BlitzConfig.groovy"
 
         maintain 1
     }
