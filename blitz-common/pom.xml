@@ -8,6 +8,7 @@
         <groupId>org.dancres</groupId>
         <version>2.1.7</version>
     </parent>
+    <groupId>org.dancres.blitz</groupId>
     <artifactId>blitz-common</artifactId>
     <name>Module :: Blitz Common</name>
     <packaging>jar</packaging>

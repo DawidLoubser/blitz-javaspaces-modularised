@@ -8,6 +8,7 @@
         <groupId>org.dancres</groupId>
         <version>2.1.7</version>
     </parent>
+    <groupId>org.dancres.blitz</groupId>
     <artifactId>blitz-service</artifactId>
     <name>Module :: Blitz Service Implementation</name>
     <packaging>jar</packaging>
@@ -15,7 +16,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.dancres</groupId>
+            <groupId>org.dancres.blitz</groupId>
             <artifactId>blitz-proxy</artifactId>
             <version>${project.version}</version>
         </dependency>
