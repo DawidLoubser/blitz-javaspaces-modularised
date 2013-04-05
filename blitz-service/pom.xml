@@ -25,11 +25,6 @@
             <artifactId>mina-core</artifactId>
         </dependency>
 
-        <!--<dependency>
-            <groupId>net.jini.lookup</groupId>
-            <artifactId>serviceui</artifactId>
-        </dependency>-->
-
     </dependencies>
 
     <build>
