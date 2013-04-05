@@ -14,6 +14,21 @@
 
 
     <dependencies>
+        <dependency>
+            <groupId>org.dancres</groupId>
+            <artifactId>blitz-proxy</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.mina</groupId>
+            <artifactId>mina-core</artifactId>
+        </dependency>
+
+        <!--<dependency>
+            <groupId>net.jini.lookup</groupId>
+            <artifactId>serviceui</artifactId>
+        </dependency>-->
 
     </dependencies>
 
