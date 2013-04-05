@@ -1,267 +1,277 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns="http://maven.apache.org/POM/4.0.0"
-        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.dancres</groupId>
-    <artifactId>blitz-javaspaces-mr</artifactId>
-    <version>2.1.5</version>
-    <packaging>jar</packaging>
+    <artifactId>main</artifactId>
+    <version>2.1.7</version>
+    <packaging>pom</packaging>
+    <name>Blitz JavaSpace</name>
+    <description>Implementation of a JavaSpace</description>
+    <inceptionYear>2013</inceptionYear>
 
-    <name>Blitz JavaSpaces</name>
-    <description>
-        A high-quality, persistence-capable,
-        open-source JavaSpaces implementation.
+    <licenses>
+        <license>
+            <name>The Apache Software License 2.0, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
 
-        Pure Java - no native libraries required.
-        No External Database Requirement - just configure and go.
-        JINI 2.1 support - with backward compatibility to JINI 2.0.x.
-        JavaSpace05 support.
-    </description>
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/DawidLoubser/blitz-javaspaces-modularised/issues</url>
+    </issueManagement>
 
-    <!-- TODO: Move across serviceUI files etc, e.g (from original ant project):
-    <copy todir="${build}/org/dancres/blitz/serviceui"
-              file="${src}/org/dancres/blitz/serviceui/blitz.htm"/>
-    <copy todir="${build}/org/dancres/blitz/tools/dash/images">
-      <fileset dir="${src}/org/dancres/blitz/tools/dash/images">
-      </fileset>
-    </copy>
-    -->
+    <scm>
+        <connection>scm:https://github.com/DawidLoubser/blitz-javaspaces-modularised
+        </connection>
+        <developerConnection>scm:https://github.com/DawidLoubser/blitz-javaspaces-modularised
+        </developerConnection>
+        <url>https://github.com/DawidLoubser/blitz-javaspaces-modularised</url>
+    </scm>
+
+    <reporting>
+        <excludeDefaults>true</excludeDefaults>
+        <plugins>        
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                 <version>2.4</version>
+                <inherited>false</inherited>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>dependency-management</report>
+                            <report>plugin-management</report>
+                            <report>issue-tracking</report>
+                            <report>mailing-list</report>
+                            <report>license</report>
+                            <report>project-team</report>
+                            <report>scm</report>
+                            <report>index</report>
+                        </reports>
+                        <configuration>
+                            <aggregate>true</aggregate>
+                        </configuration>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.8</version>
+                <inherited>false</inherited>
+                <configuration>
+                    <aggregate>true</aggregate>
+                </configuration>
+                <reportSets>
+                    <reportSet>
+                        <id>aggregate</id>
+                        <configuration>
+                            <links>
+                                <link>http://docs.oracle.com/javase/7/docs/api/</link>
+                                <link>https://river.apache.org/doc/api/</link>
+                            </links>
+                            <detectLinks>true</detectLinks>
+                            <breakiterator>true</breakiterator>
+                            <top><![CDATA[<h2>Blitz ${project.version} API Documentation</h2>]]></top>                            
+                        </configuration>
+                        <reports>
+                            <report>aggregate</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+        </plugins>
+    </reporting>
 
     <developers>
         <developer>
-            <name>Dan Creswell</name>
-            <email>dan.creswell@gmail.com</email>
+            <id>dennis</id>
+            <name>Dennis Reedy</name>
+            <email>dennis.reedy@gmail.com</email>
             <roles>
-                <role>Architect</role>
                 <role>Developer</role>
             </roles>
+            <timezone>-5</timezone>
         </developer>
         <developer>
+            <id>dawid</id>
             <name>Dawid Loubser</name>
-            <email>dawid@travellinck.com</email>
-            <organization>Travellinck International</organization>
+            <email>dennis.reedy@gmail.com</email>
             <roles>
-                <role>Packager</role>
+                <role>Developer</role>
             </roles>
+            <timezone>+2</timezone>
         </developer>
     </developers>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-
-    <build>
-        <plugins>
-            <!-- Java Compilation -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                    <fork>true</fork>
-                    <maxmem>1024m</maxmem>
-                </configuration>
-            </plugin>
-            
-            <!-- Unit testing -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.9</version>
-            </plugin>
-
-            <!-- Create separate JARs for Blitz API, Implementation, Stats, etc -->
-            <!-- TODO: Properly separate into different modules (classdepandjar approach is deprecated) -->
-            <plugin>
-                <artifactId>maven-rio-plugin</artifactId>
-                <version>5.0-SNAPSHOT</version>
-                <executions>
-                    <execution>
-                        <id>blitz-dl</id>
-                        <goals>
-                            <goal>classdepandjar</goal>
-                        </goals>
-                        <configuration>
-                            <createJar>
-                                <classifier>dl</classifier>
-                                <ins>
-                                    <in>com.go</in>
-                                    <in>org.dancres</in>
-                                    <in>net.jini</in>
-                                    <in>org.jini</in>
-                                    <in>com.sun.jini</in>
-                                </ins>
-                                <outs>
-                                    <out>net.jini.core</out>
-                                    <out>net.jini.activation</out>
-                                    <out>net.jini.config</out>
-                                    <out>net.jini.constraint</out>
-                                    <out>net.jini.export</out>
-                                    <out>net.jini.id</out>
-                                    <out>net.jini.iiop</out>
-                                    <out>net.jini.io</out>
-                                    <out>net.jini.jeri</out>
-                                    <out>net.jini.jrmp</out>
-                                    <out>net.jini.loader</out>
-                                    <out>net.jini.security</out>
-                                    <out>net.jini.url</out>
-                                    <out>com.sun.jini.discovery</out>
-                                </outs>
-                                <topclasses>
-                                    <topclass>org.dancres.blitz.remote.BlitzProxy</topclass>
-                                    <topclass>org.dancres.blitz.remote.BlitzServiceImpl_Stub</topclass>
-                                    <topclass>org.dancres.blitz.remote.LeaseImpl</topclass>
-                                    <topclass>org.dancres.blitz.notify.SpaceNotifyUID</topclass>
-                                    <topclass>org.dancres.blitz.remote.txn.SpaceTxnUID</topclass>
-                                    <topclass>org.dancres.blitz.remote.txn.TxnMgrProxy</topclass>
-                                    <topclass>org.dancres.blitz.notify.AvailabilityEventImpl</topclass>
-                                    <topclass>org.dancres.blitz.SpaceEntryUID</topclass>
-                                    <topclass>org.dancres.blitz.oid.UIDImpl</topclass>
-                                    <topclass>org.dancres.blitz.remote.AdminProxy</topclass>
-                                    <topclass>org.dancres.blitz.remote.TxnParticipantProxy</topclass>
-                                    <topclass>org.dancres.blitz.remote.ProxyVerifier</topclass>
-                                    <topclass>org.dancres.blitz.remote.ConstrainableTxnParticipantProxy</topclass>
-                                    <topclass>org.dancres.blitz.remote.ConstrainableBlitzProxy</topclass>
-                                    <topclass>org.dancres.blitz.remote.ConstrainableLeaseImpl</topclass>
-                                    <topclass>org.dancres.blitz.remote.ConstrainableAdminProxy</topclass>
-                                    <topclass>org.dancres.blitz.remote.debug.TimingInvocationHandler</topclass>
-                                    <topclass>org.dancres.blitz.remote.view.EntryViewUID</topclass>
-                                </topclasses>
-                            </createJar>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-        </plugins>
-    </build>
-
-    <dependencies>
-        <!-- Jini Core -->
-        <dependency>
-            <groupId>net.jini</groupId>
-            <artifactId>jsk-lib</artifactId>
-            <version>2.1</version>
-        </dependency>
-        <dependency>
-            <groupId>net.jini</groupId>
-            <artifactId>jsk-dl</artifactId>
-            <version>2.1</version>
-        </dependency>
-        <dependency>
-            <groupId>net.jini</groupId>
-            <artifactId>jsk-platform</artifactId>
-            <version>2.1</version>
-        </dependency>
-
-        <!-- Sun Jini utilities -->
-        <dependency>
-            <groupId>com.sun.jini</groupId>
-            <artifactId>sun-util</artifactId>
-            <version>2.1</version>
-        </dependency>
-
-
-        <!-- Berkely DB Java Edition -->
-        <dependency>
-            <groupId>com.sleepycat</groupId>
-            <artifactId>je</artifactId>
-            <version>4.0.92</version>
-        </dependency>
-
-        <!-- Outrigger (JavaSpaces Reference Implementation) required for OutriggerViewer User Interface -->
-        <dependency>
-            <groupId>com.sun.jini</groupId>
-            <artifactId>outrigger</artifactId>
-            <version>2.1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.mina</groupId>
-            <artifactId>mina-core</artifactId>
-            <version>1.1.7</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.xsocket</groupId>
-            <artifactId>xSocket</artifactId>
-            <version>1.2.1</version>
-        </dependency>
-
-        <!-- TODO: Directly required?
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.6.4</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-jdk14</artifactId>
-            <version>1.6.4</version>
-        </dependency>
-        -->
-
-        <!-- Unit testing -->
-        <dependency>
-		    <groupId>junit</groupId>
-		    <artifactId>junit</artifactId>
-		    <version>4.8.1</version>
-		    <scope>test</scope>
-		</dependency>
-
-        <!-- Integration testing -->
-        <dependency>
-            <groupId>org.rioproject</groupId>
-            <artifactId>rio-test</artifactId>
-            <version>5.0-SNAPSHOT</version>
-            <scope>test</scope>
-        </dependency>
-        
-    </dependencies>
-
 
     <repositories>
         <repository>
             <id>rio</id>
             <url>http://www.rio-project.org/maven2</url>
         </repository>
+
+        <repository>
+            <id>jboss</id>
+            <url>http://repository.jboss.org/maven2</url>
+        </repository>
     </repositories>
 
 
-    <profiles>
-        <!-- Do integration testing on-demand only -->
-        <profile>
-            <id>integration-test</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <build>
-                <plugins>
-                    <!-- Integration test(s) -->
-                    <plugin>
-                        <artifactId>maven-failsafe-plugin</artifactId>
-                        <version>2.9</version>
-                        <configuration>
-                            <forkMode>once</forkMode>
-                            <argLine>-DRIO_TEST_ATTACH</argLine>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>integration-test</goal>
-                                    <goal>verify</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
-    
+    <dependencyManagement>
+        <dependencies>
+            
+            <dependency>
+                <groupId>net.jini</groupId>
+                <artifactId>jsk-lib</artifactId>
+                <version>${river.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>net.jini</groupId>
+                <artifactId>jsk-dl</artifactId>
+                <version>${river.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>net.jini</groupId>
+                <artifactId>jsk-platform</artifactId>
+                <version>${river.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.sun.jini</groupId>
+                <artifactId>outrigger</artifactId>
+                <version>${river.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.sun.jini</groupId>
+                <artifactId>outrigger-dl</artifactId>
+                <version>${river.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.sleepycat</groupId>
+                <artifactId>je</artifactId>
+                <version>${sleepycat.version}</version>
+            </dependency>
+
+            <!--<dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-jdk14</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback.version}</version>
+            </dependency-->
+
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+            </dependency>
+
+        </dependencies>
+
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>2.3</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.13</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <version>2.13</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>2.1.1</version>
+                </plugin>
+
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.2</version>
+                <inherited>false</inherited>
+
+                <configuration>
+                    <locales>en</locales>
+                    <outputDirectory>${basedir}/docs</outputDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-descriptor</id>
+                        <goals>
+                            <goal>attach-descriptor</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                    <optimize>true</optimize>
+                    <encoding>UTF-8</encoding>
+                    <meminitial>128m</meminitial>
+                    <maxmem>1024m</maxmem>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.5</version>
+            </plugin>
+        </plugins>
+    </build>
+
+    <modules>
+        <module>blitz-common</module>
+        <module>blitz-proxy</module>
+        <module>blitz-service</module>
+        <module>blitz-ui</module>
+  </modules>
+
+    <properties>
+        <junit.version>4.8.2</junit.version>
+        <river.version>2.1.1</river.version>
+        <sleepycat.version>4.0.92</sleepycat.version>
+        <!--<slf4j.version>1.7.2</slf4j.version>
+        <logback.version>1.0.7</logback.version>-->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
 </project>
