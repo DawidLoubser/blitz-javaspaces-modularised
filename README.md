@@ -1,4 +1,4 @@
-Blitz JavaSpaces (packaged for Maven/Rio)
+Blitz JavaSpaces (modularized with Maven)
 =========================================
 
 JavaSpaces, as an implementation of Space-Based architecture (tuple spaces) is a very powerful computing paradigm.
