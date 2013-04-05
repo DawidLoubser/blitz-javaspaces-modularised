@@ -9,6 +9,7 @@
         <version>2.1.7</version>
     </parent>
     <artifactId>blitz-ui</artifactId>
+    <groupId>org.dancres.blitz</groupId>
     <name>Module :: Blitz User Interface</name>
     <packaging>jar</packaging>
 
@@ -16,7 +17,7 @@
     <dependencies>
 
         <dependency>
-            <groupId>org.dancres</groupId>
+            <groupId>org.dancres.blitz</groupId>
             <artifactId>blitz-proxy</artifactId>
             <version>${project.version}</version>
         </dependency>
