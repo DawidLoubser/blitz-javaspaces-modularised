@@ -1,7 +1,9 @@
+import net.jini.core.entry.Entry
 import net.jini.export.Exporter
 import net.jini.jeri.BasicJeriExporter
 import net.jini.jeri.ProxyTrustILFactory
 import net.jini.jeri.tcp.TcpServerEndpoint
+import net.jini.lookup.ui.MainUI
 import net.jini.security.BasicProxyPreparer
 import net.jini.security.ProxyPreparer
 import org.dancres.blitz.config.Transient
@@ -9,6 +11,8 @@ import org.dancres.blitz.stats.InstanceSwitch
 import org.dancres.blitz.stats.OpSwitch
 import org.dancres.blitz.stats.Switch
 import org.rioproject.config.Component
+import org.rioproject.entry.UIDescriptorFactory
+import org.rioproject.serviceui.UIFrameFactory
 
 @Component('org.dancres.blitz')
 class BlitzConfig {
@@ -64,4 +68,11 @@ class BlitzConfig {
     ProxyPreparer recoveredTxnPreparer = new BasicProxyPreparer();
     ProxyPreparer activationIdPreparer = new BasicProxyPreparer();
     ProxyPreparer activationSysPreparer = new BasicProxyPreparer()
+
+    Entry[] getInitialAttrs() {
+        String uiClass = 'org.dancres.blitz.tools.dash.DashBoardFrame'
+        URL url = new URL("artifact:org.dancres.blitz:blitz-ui:2.1.7")
+        def entry = [UIDescriptorFactory.getUIDescriptor(MainUI.ROLE, new UIFrameFactory(url, uiClass))]
+        return entry as Entry[]
+    }
 }

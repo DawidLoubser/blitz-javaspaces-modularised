@@ -9,8 +9,8 @@ deployment(name:'Basic Blitz Deployment') {
     groups System.getProperty(Constants.GROUPS_PROPERTY_NAME, System.getProperty('user.name'))
 
     // Blitz
-    artifact id: 'blitz-dl',   'org.dancres:blitz-proxy:2.1.7'
-    artifact id: 'blitz-impl', 'org.dancres:blitz-service:2.1.7'
+    artifact id: 'blitz-dl',   'org.dancres.blitz:blitz-proxy:2.1.7'
+    artifact id: 'blitz-impl', 'org.dancres.blitz:blitz-service:2.1.7'
 
     logging {
       logger 'com.travellinck', Level.INFO
@@ -32,7 +32,7 @@ deployment(name:'Basic Blitz Deployment') {
         // Sample configuration for a basic, untuned, default instance. See Blitz
         // sample configs for details
         //configuration "file:src/test/conf/blitz.config"
-        configuration "file:src/test/conf/BlitzConfig.groovy"
+        configuration "file:/Users/dreedy/dev/src/projects/blitz/blitz-javaspaces-modularised/blitz-service/src/test/conf/BlitzConfig.groovy"
 
         maintain 1
     }
