@@ -21,8 +21,8 @@ class BlitzConfig {
     boolean ignoreLogConfig = true
 
     String name = "Space";
-    String persistDir = "${System.getenv("RIO_HOME")}/system/external/blitz/data"
-    String logDir = "${System.getenv("RIO_HOME")}/system/external/blitz/data";
+    String persistDir = "${System.getProperty("user.dir")}/target/blitz/data"
+    String logDir = "${System.getProperty("user.dir")}/target/blitz/log";
 
     int maxWriteThreads = 1
     int desiredPendingWrites = 256
@@ -47,7 +47,6 @@ class BlitzConfig {
     int maxTaskThreads = 8;
     int maxEventProcessors = 4;
 
-    // TODO: Configure TimeBarrierPersistent/Persistent
     Persistent storageModel = new Persistent(
             true,   // shouldReset
             true,   // shouldClean
