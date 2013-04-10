@@ -11,9 +11,8 @@ for developing, deploying and managing distributed systems composed of services.
 About this project
 ------------------
 
-Blitz Javaspaces is historically built, provisioned, and configured using legacy technology
+Blitz Javaspaces is historically built, installed, and configured manually
 (built with apache ant + manual dependency management, manually installed, configured via Jini configuration files).
-**In other words, difficult.**
 
 This project is a re-packaging of the Blitz project to build with Maven (suitable for deployment to the maven repo of
 your choice), and provides samples of how to dynamically provision Blitz instances as "first class" services in Rio.
@@ -22,7 +21,7 @@ It is now **easy** to provision a reliable, persistent JavaSpace with Rio.
 Building
 --------
 
-* Required software: Apache Maven (3.0+ recommended), Java (JDK) 1.6+, Rio 5.0+
+* Required software: Apache Maven (3.0+ recommended), Java (JDK) 1.7+, Rio 5.0-M1+
 * To build artifacts and install in local maven repo, run `mvn install`
 * To run the integration tests (deploys to Rio, needs RIO_HOME set) run `mvn verify`
 * See [sample deployment opstring](https://github.com/DawidLoubser/blitz-javaspaces-modularised/blob/master/blitz-service/src/test/conf/deployment.groovy)
