@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.dancres</groupId>
     <artifactId>main</artifactId>
-    <version>2.1.7</version>
+    <version>2.2.0</version>
     <packaging>pom</packaging>
     <name>Blitz JavaSpace</name>
     <description>Implementation of a JavaSpace</description>
@@ -145,13 +145,15 @@
             <dependency>
                 <groupId>com.sun.jini</groupId>
                 <artifactId>outrigger</artifactId>
-                <version>${river.version}</version>
+                <!-- TODO: Where is outrigger for River 2.2.1+ ? -->
+                <version>2.1.1</version>
             </dependency>
 
             <dependency>
                 <groupId>com.sun.jini</groupId>
                 <artifactId>outrigger-dl</artifactId>
-                <version>${river.version}</version>
+                <!-- TODO: Where is outrigger for River 2.2.1+ ? -->
+                <version>2.1.1</version>
             </dependency>
 
             <dependency>
@@ -284,10 +286,10 @@
 
     <properties>
         <junit.version>4.8.2</junit.version>
-        <river.version>2.1.1</river.version>
+        <river.version>2.2.1</river.version>
         <sleepycat.version>4.0.92</sleepycat.version>
         <mina.version>1.0.5</mina.version>
-        <rio.version>5.0-M2</rio.version>
+        <rio.version>5.0-M3</rio.version>
         <slf4j.version>1.7.2</slf4j.version>
         <!--<logback.version>1.0.7</logback.version>-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

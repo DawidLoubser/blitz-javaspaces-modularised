@@ -9,8 +9,8 @@ deployment(name:'Basic Blitz Deployment') {
     groups System.getProperty(Constants.GROUPS_PROPERTY_NAME, System.getProperty('user.name'))
 
     // Blitz
-    artifact id: 'blitz-dl',   'org.dancres.blitz:blitz-proxy:2.1.7'
-    artifact id: 'blitz-impl', 'org.dancres.blitz:blitz-service:2.1.7'
+    artifact id: 'blitz-dl',   'org.dancres.blitz:blitz-proxy:2.2.0'
+    artifact id: 'blitz-impl', 'org.dancres.blitz:blitz-service:2.2.0'
 
     logging {
       logger 'com.travellinck', Level.INFO
