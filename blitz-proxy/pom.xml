@@ -23,7 +23,7 @@
         </dependency>
 
         <dependency>
-            <groupId>com.sun.jini</groupId>
+            <groupId>org.apache.river</groupId>
             <artifactId>outrigger-dl</artifactId>
         </dependency>
 
