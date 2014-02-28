@@ -78,7 +78,7 @@ class BlitzConfig {
 
     Entry[] getInitialAttrs() {
         String uiClass = 'org.dancres.blitz.tools.dash.DashBoardFrame'
-        URL url = new URL("artifact:org.dancres.blitz:blitz-ui:2.2.0")
+        URL url = new URL("artifact:org.dancres.blitz:blitz-ui:2.2.1")
         def entry = [UIDescriptorFactory.getUIDescriptor(MainUI.ROLE, new UIFrameFactory(url, uiClass))]
         return entry as Entry[]
     }
