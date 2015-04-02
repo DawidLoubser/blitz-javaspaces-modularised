@@ -6,7 +6,7 @@
     <parent>
         <artifactId>main</artifactId>
         <groupId>org.dancres</groupId>
-        <version>2.2.0</version>
+        <version>2.2.1</version>
     </parent>
     <groupId>org.dancres.blitz</groupId>
     <artifactId>blitz-common</artifactId>
