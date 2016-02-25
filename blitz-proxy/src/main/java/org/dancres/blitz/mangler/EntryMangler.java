@@ -64,7 +64,7 @@ public class EntryMangler {
 
     /**
      * @param isSnapshot indicates whether this mangle is for a snapshot operation on
-     * a template Entry 
+     * a template Entry
      */
     public MangledEntry mangle(Entry anEntry, boolean isSnapshot) {
         Class myEntryClass = anEntry.getClass();
@@ -101,23 +101,23 @@ public class EntryMangler {
             int myNextField = 0;
 
             for (int i = 0; i < myFields.length; i++) {
-                if (theLogger.isLoggable(Level.FINEST)) {
-                    theLogger.finest("Looking at field: " +
-                            myFields[i].getName());
-                    theLogger.finest("Valid:" +
-                            myMangledFields[myNextField]);
-                    theLogger.finest("Hash: " +
-                            myMangledFields[myNextField].hashCode());
-                }
+                // if (theLogger.isLoggable(Level.FINEST)) {
+                //     theLogger.finest("Looking at field: " +
+                //             myFields[i].getName());
+                //     theLogger.finest("Valid:" +
+                //             myMangledFields[myNextField]);
+                //     theLogger.finest("Hash: " +
+                //             myMangledFields[myNextField].hashCode());
+                // }
                 if (! myMangledFields[myNextField].isNull()) {
-                    if (theLogger.isLoggable(Level.FINEST)) {
-                        theLogger.finest("Not null");
-                        theLogger.finest("Copy from: " +
-                                myMangledFields[myNextField].getName());
-                        theLogger.finest("Value will be: " +
-                                myMangledFields[myNextField].unMangle(null,
-                                        anME.needsIntegrityCheck()));
-                    }
+                    // if (theLogger.isLoggable(Level.FINEST)) {
+                    //     theLogger.finest("Not null");
+                    //     theLogger.finest("Copy from: " +
+                    //             myMangledFields[myNextField].getName());
+                    //     theLogger.finest("Value will be: " +
+                    //             myMangledFields[myNextField].unMangle(null,
+                    //                     anME.needsIntegrityCheck()));
+                    // }
                     myFields[i].set(myEntry,
                                     myMangledFields[myNextField++].unMangle(null,
                                             anME.needsIntegrityCheck()));
