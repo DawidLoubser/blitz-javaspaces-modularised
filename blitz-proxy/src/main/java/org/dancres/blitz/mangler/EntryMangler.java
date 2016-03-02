@@ -14,9 +14,6 @@ import java.util.Comparator;
 import java.util.WeakHashMap;
 import java.util.Map;
 
-import java.util.logging.Logger;
-import java.util.logging.Level;
-
 import net.jini.core.entry.Entry;
 import net.jini.core.entry.UnusableEntryException;
 
@@ -38,9 +35,6 @@ import net.jini.loader.ClassLoading;
    no-args constructor
  */
 public class EntryMangler {
-    private static final Logger theLogger =
-            Logger.getLogger("org.dancres.blitz.mangler.EntryMangler");
-
     private static final int INVALID_MODIFIERS = Modifier.TRANSIENT |
         Modifier.STATIC | Modifier.FINAL;
 
@@ -101,23 +95,7 @@ public class EntryMangler {
             int myNextField = 0;
 
             for (int i = 0; i < myFields.length; i++) {
-                // if (theLogger.isLoggable(Level.FINEST)) {
-                //     theLogger.finest("Looking at field: " +
-                //             myFields[i].getName());
-                //     theLogger.finest("Valid:" +
-                //             myMangledFields[myNextField]);
-                //     theLogger.finest("Hash: " +
-                //             myMangledFields[myNextField].hashCode());
-                // }
                 if (! myMangledFields[myNextField].isNull()) {
-                    // if (theLogger.isLoggable(Level.FINEST)) {
-                    //     theLogger.finest("Not null");
-                    //     theLogger.finest("Copy from: " +
-                    //             myMangledFields[myNextField].getName());
-                    //     theLogger.finest("Value will be: " +
-                    //             myMangledFields[myNextField].unMangle(null,
-                    //                     anME.needsIntegrityCheck()));
-                    // }
                     myFields[i].set(myEntry,
                                     myMangledFields[myNextField++].unMangle(null,
                                             anME.needsIntegrityCheck()));
@@ -127,7 +105,6 @@ public class EntryMangler {
 
             return myEntry;
         } catch (Exception anE) {
-            theLogger.log(Level.SEVERE, "Error during unpack: ", anE);
             throw new UnusableEntryException(anE);
         }
     }
@@ -230,10 +207,8 @@ public class EntryMangler {
                         new MangledField(myFieldName, myFieldValue);
             }
         } catch (IllegalAccessException anIAE) {
-            theLogger.log(Level.SEVERE, "Problem accessing field", anIAE);
             throw new InternalError("Couldn't access field: " + myFields[i]);
         } catch (IOException anIOE) {
-            theLogger.log(Level.SEVERE, "Fatal error", anIOE);
             throw new InternalError("Fatal error: " + anIOE);
         }
 
